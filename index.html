@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    
+    <title>L'Atelier B. | Réparation & Vente de Vélos à Barneville-Carteret</title>
+    <meta name="description" content="L'Atelier B. à Barneville-Carteret : entretien, réparation et vente de vélos neufs et d'occasion. Benjamin, expert passionné, vous accueille sur la Côte des Isles.">
+    
+    <style>
+        /* --- VARIABLES DE COULEURS --- */
+        :root {
+            --bleu-atelier: #0d4692; /* Le bleu original du logo */
+            --rouge-accent: #ff5757; /* L'accentuation du site actuel */
+            --gris-anthracite: #1c1c1c;
+            --blanc-creme: #fcfcfc;
+            --texte-sombre: #37373d;
+            --gris-clair: #eeeeee;
+            --vert-dispo: #28a745;
+        }
+
+        /* --- STYLES DE BASE (Inspirés du Chalet Gourmand) --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--blanc-creme); color: var(--texte-sombre); line-height: 1.6; overflow-x: hidden; }
+
+        /* --- HEADER & LOGO --- */
+        header {
+            background-color: var(--gris-anthracite);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-img { max-height: 80px; width: auto; transition: transform 0.3s ease; }
+        .logo-img:hover { transform: scale(1.03); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--gris-clair);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: var(--gris-anthracite);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--bleu-atelier); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.8)), url('fond-velo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero h1 { font-size: 32px; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .btn {
+            display: inline-block;
+            background-color: var(--bleu-atelier);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn:hover { background-color: var(--rouge-accent); transform: scale(1.05); }
+
+        /* --- GRID PRODUITS / SERVICES --- */
+        .section-padding { padding: 50px 20px; }
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .carte-service {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--bleu-atelier);
+            text-align: center;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .carte-service:hover { transform: translateY(-5px); }
+        .carte-texte { padding: 20px; }
+
+        /* --- REVEAL ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- CONTACT INFO --- */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .contact-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--bleu-atelier);
+        }
+
+        footer {
+            background-color: var(--gris-anthracite);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            border-top: 4px solid var(--bleu-atelier);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo-atelier-b.png" alt="L'Atelier B. Logo" class="logo-img">
+    </header>
+
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#atelier">L'Atelier</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Magasin de vélos à<br>Barneville-Carteret</h1>
+        <p>Vente, réparation et entretien : votre expert cycle sur la Côte des Isles.</p>
+        <a href="tel:0683306032" class="btn">Prendre rendez-vous</a>
+    </section>
+
+    <section class="section-padding" id="services">
+        <div class="grid-services">
+            <div class="carte-service reveal">
+                <div class="carte-texte">
+                    <h3>Réparation & Entretien</h3>
+                    <p>Révision complète, freinage, transmission. Benjamin prend soin de votre monture, peu importe la marque.</p>
+                </div>
+            </div>
+            <div class="carte-service reveal">
+                <div class="carte-texte">
+                    <h3>Vente Neuf & Occasion</h3>
+                    <p>Une sélection de vélos adaptés à nos chemins normands : VTT, VTC, Électrique.</p>
+                </div>
+            </div>
+            <div class="carte-service reveal">
+                <div class="carte-texte">
+                    <h3>Accessoires & Pièces</h3>
+                    <p>Équipez-vous pour l'aventure : casques, antivols, pneus et composants de qualité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact" style="background-color: #f4f4f4;">
+        <div class="contact-container">
+            <div class="contact-box reveal">
+                <h4>Infos Pratiques</h4>
+                <p><strong>Benjamin Lepelley</strong></p>
+                <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
+                <p>📞 06 83 30 60 32</p>
+                <p>📧 latelierb50@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 L'Atelier B. - Barneville-Carteret<br>
+        Propulsé par <a href="https://cotentinwebstudio.fr" style="color: var(--bleu-atelier); text-decoration:none;">Cotentin Web Studio</a></p>
+    </footer>
+
+    <script>
+        // Script Reveal on Scroll (Même logique que Chalet Gourmand)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
