@@ -11,16 +11,16 @@
     <style>
         /* --- VARIABLES DE COULEURS --- */
         :root {
-            --bleu-atelier: #0d4692; /* Le bleu original du logo */
-            --rouge-accent: #ff5757; /* L'accentuation du site actuel */
+            --bleu-atelier: #0d4692;
+            --rouge-accent: #ff5757;
             --gris-anthracite: #1c1c1c;
             --blanc-creme: #fcfcfc;
             --texte-sombre: #37373d;
+            --gris-doux: #666666;
             --gris-clair: #eeeeee;
-            --vert-dispo: #28a745;
         }
 
-        /* --- STYLES DE BASE (Inspirés du Chalet Gourmand) --- */
+        /* --- STYLES DE BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--blanc-creme); color: var(--texte-sombre); line-height: 1.6; overflow-x: hidden; }
 
@@ -70,6 +70,7 @@
             align-items: center;
         }
         .hero h1 { font-size: 32px; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        
         .btn {
             display: inline-block;
             background-color: var(--bleu-atelier);
@@ -80,10 +81,11 @@
             font-weight: bold;
             transition: 0.3s;
             margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
         .btn:hover { background-color: var(--rouge-accent); transform: scale(1.05); }
 
-        /* --- GRID PRODUITS / SERVICES --- */
+        /* --- GRID SERVICES --- */
         .section-padding { padding: 50px 20px; }
         .grid-services {
             display: grid;
@@ -108,29 +110,92 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- CONTACT INFO --- */
+        /* --- CONTACT CONTAINER & MODULES --- */
         .contact-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
         }
         .contact-box {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             border-left: 5px solid var(--bleu-atelier);
         }
+        .contact-box h4 {
+            font-size: 22px;
+            color: var(--gris-anthracite);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gris-clair);
+            padding-bottom: 10px;
+        }
+        .contact-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: var(--texte-sombre);
+        }
 
+        /* --- BOUTONS DE CONTACT (STYLE CHALET GOURMAND) --- */
+        .icon-inline {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gris-anthracite);
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.2s, transform 0.2s;
+            border: none;
+            font-size: 15px;
+        }
+        .btn-contact:hover {
+            background-color: var(--bleu-atelier);
+            transform: scale(1.02);
+        }
+        .btn-contact .icon-inline {
+            color: var(--rouge-accent); 
+        }
+
+        /* --- FOOTER & SOCIALS --- */
         footer {
             background-color: var(--gris-anthracite);
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 35px 20px;
             font-size: 13px;
             border-top: 4px solid var(--bleu-atelier);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: white;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            color: var(--bleu-atelier);
+            transform: scale(1.1);
+        }
+        .social-svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
         }
     </style>
 </head>
@@ -142,14 +207,13 @@
 
     <nav>
         <a href="#services">Services</a>
-        <a href="#atelier">L'Atelier</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <section class="hero">
         <h1>Magasin de vélos à<br>Barneville-Carteret</h1>
         <p>Vente, réparation et entretien : votre expert cycle sur la Côte des Isles.</p>
-        <a href="tel:0683306032" class="btn">Prendre rendez-vous</a>
+        <a href="#contact" class="btn">Nous rendre visite</a>
     </section>
 
     <section class="section-padding" id="services">
@@ -175,25 +239,53 @@
         </div>
     </section>
 
-    <section class="section-padding" id="contact" style="background-color: #f4f4f4;">
+    <section class="section-padding" id="contact" style="background-color: #f9f9f9;">
         <div class="contact-container">
             <div class="contact-box reveal">
                 <h4>Infos Pratiques</h4>
-                <p><strong>Benjamin Lepelley</strong></p>
+                <p><strong>L'Atelier B. — Benjamin Lepelley</strong></p>
                 <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
-                <p>📞 06 83 30 60 32</p>
-                <p>📧 latelierb50@gmail.com</p>
+                
+                <!-- BOUTON ITINERAIRE MAPS -->
+                <a href="https://www.google.com/maps/dir//L'Atelier+B.+15+Rte+de+la+Lib%C3%A9ration+50270+Barneville-Carteret" target="_blank" class="btn-contact">
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 
+                    Itinéraire Google Maps
+                </a>
+                
+                <!-- BOUTON APPELER -->
+                <a href="tel:0683306032" class="btn-contact">
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg> 
+                    Appeler (06 83 30 60 32)
+                </a>
+                
+                <!-- BOUTON EMAIL -->
+                <a href="mailto:latelierb50@gmail.com" class="btn-contact">
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 
+                    Envoyer un e-mail
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 L'Atelier B. - Barneville-Carteret<br>
-        Propulsé par <a href="https://cotentinwebstudio.fr" style="color: var(--bleu-atelier); text-decoration:none;">Cotentin Web Studio</a></p>
+        <!-- MODULE RESEAUX SOCIAUX -->
+        <div class="social-icons">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/profile.php?id=61566432796587" target="_blank" title="Suivez l'Atelier B. sur Facebook">
+                <svg class="social-svg" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/latelierb_velo/" target="_blank" title="Suivez l'Atelier B. sur Instagram">
+                <svg class="social-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+        </div>
+
+        <p>© 2026 L'Atelier B. - Barneville-Carteret<br><br>
+        Création web : <a href="https://cotentinwebstudio.fr/index.html" target="_blank" style="color: var(--bleu-atelier); text-decoration: none; font-weight: bold;">Cotentin Web Studio</a></p>
     </footer>
 
     <script>
-        // Script Reveal on Scroll (Même logique que Chalet Gourmand)
+        // Script Reveal on Scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
