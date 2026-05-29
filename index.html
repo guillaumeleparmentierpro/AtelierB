@@ -59,17 +59,44 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.8)), url('fond-velo.jpg');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 420px;
+            justify-content: center;
+            overflow: hidden;
         }
-        .hero h1 { font-size: 32px; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1558981285-6f0c68243f32?w=1400&q=80&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 60%;
+            z-index: 0;
+            transform: scale(1.03);
+            transition: transform 8s ease;
+        }
+        .hero:hover .hero-bg { transform: scale(1.06); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(13, 70, 146, 0.55) 0%,
+                rgba(28, 28, 28, 0.78) 100%
+            );
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 { font-size: 32px; margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+        .hero p { font-size: 17px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); opacity: 0.92; }
         
         .btn {
             display: inline-block;
@@ -103,7 +130,22 @@
             overflow: hidden;
             transition: 0.3s;
         }
-        .carte-service:hover { transform: translateY(-5px); }
+        .carte-service:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.13); }
+
+        /* --- PHOTO DE SERVICE --- */
+        .carte-photo {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .carte-service:hover .carte-photo { transform: scale(1.04); }
+        .carte-photo-wrapper {
+            overflow: hidden;
+            height: 190px;
+        }
+
         .carte-texte { padding: 20px; }
 
         /* --- REVEAL ANIMATION --- */
@@ -135,7 +177,7 @@
             color: var(--texte-sombre);
         }
 
-        /* --- BOUTONS DE CONTACT (STYLE CHALET GOURMAND) --- */
+        /* --- BOUTONS DE CONTACT --- */
         .icon-inline {
             width: 20px;
             height: 20px;
@@ -211,32 +253,66 @@
         <a href="#apropos">A propos</a>
     </nav>
 
+    <!-- HERO avec photo de fond -->
     <section class="hero">
-        <h1>Vente & Réparation Vélos<br>Barneville-Carteret</h1>
-        <p>Votre expert cycle sur la Côte des Isles.</p>
-        <a href="#contact" class="btn">Nous rendre visite</a>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Vente & Réparation Vélos<br>Barneville-Carteret</h1>
+            <p>Votre expert cycle sur la Côte des Isles.</p>
+            <a href="#contact" class="btn">Nous rendre visite</a>
+        </div>
     </section>
 
+    <!-- SERVICES avec photos -->
     <section class="section-padding" id="services">
         <div class="grid-services">
+
             <div class="carte-service reveal">
+                <div class="carte-photo-wrapper">
+                    <img 
+                        src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&q=80&auto=format&fit=crop" 
+                        alt="Réparation et entretien de vélo en atelier"
+                        class="carte-photo"
+                        loading="lazy"
+                    >
+                </div>
                 <div class="carte-texte">
                     <h3>Réparation & Entretien</h3>
                     <p>Révision complète, freinage, transmission. Benjamin prend soin de votre monture, peu importe la marque.</p>
                 </div>
             </div>
+
             <div class="carte-service reveal">
+                <div class="carte-photo-wrapper">
+                    <img 
+                        src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=600&q=80&auto=format&fit=crop" 
+                        alt="Vente de vélos neufs et d'occasion VTT VTC électrique"
+                        class="carte-photo"
+                        loading="lazy"
+                    >
+                </div>
                 <div class="carte-texte">
                     <h3>Vente Neuf & Occasion</h3>
                     <p>Une sélection de vélos adaptés à nos chemins normands : VTT, VTC, Électrique.</p>
                 </div>
             </div>
+
             <div class="carte-service reveal">
+                <div class="carte-photo-wrapper">
+                    <img 
+                        src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600&q=80&auto=format&fit=crop" 
+                        alt="Accessoires et pièces vélo casques antivols"
+                        class="carte-photo"
+                        loading="lazy"
+                    >
+                </div>
                 <div class="carte-texte">
                     <h3>Accessoires & Pièces</h3>
                     <p>Équipez-vous pour l'aventure : casques, antivols, pneus et composants de qualité.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -246,19 +322,16 @@
                 <h4>Infos Pratiques</h4>
                 <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
                 
-                <!-- BOUTON ITINERAIRE MAPS -->
                 <a href="https://www.google.com/maps/dir//L'Atelier+B.+15+Rte+de+la+Lib%C3%A9ration+50270+Barneville-Carteret" target="_blank" class="btn-contact">
                     <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 
                     Itinéraire Google Maps
                 </a>
                 
-                <!-- BOUTON APPELER -->
                 <a href="tel:0683306032" class="btn-contact">
                     <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg> 
                     Appeler (06 83 30 60 32)
                 </a>
                 
-                <!-- BOUTON EMAIL -->
                 <a href="mailto:latelierb50@gmail.com" class="btn-contact">
                     <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 
                     latelierb50@gmail.com
@@ -268,13 +341,10 @@
     </section>
 
     <footer>
-        <!-- MODULE RESEAUX SOCIAUX -->
         <div class="social-icons">
-            <!-- Facebook -->
             <a href="https://www.facebook.com/profile.php?id=61566432796587" target="_blank" title="Suivez l'Atelier B. sur Facebook">
                 <svg class="social-svg" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/></svg>
             </a>
-            <!-- Instagram -->
             <a href="https://www.instagram.com/latelierb_velo/" target="_blank" title="Suivez l'Atelier B. sur Instagram">
                 <svg class="social-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
             </a>
@@ -284,7 +354,6 @@
     </footer>
 
     <script>
-        // Script Reveal on Scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
