@@ -9,7 +9,6 @@
     <meta name="description" content="L'Atelier B. à Barneville-Carteret : entretien, réparation et vente de vélos neufs et d'occasion. Benjamin, expert passionné, vous accueille sur la Côte des Isles.">
     
     <style>
-        /* --- VARIABLES DE COULEURS --- */
         :root {
             --bleu-atelier: #0d4692;
             --rouge-accent: #ff5757;
@@ -19,12 +18,9 @@
             --gris-doux: #666666;
             --gris-clair: #eeeeee;
         }
-
-        /* --- STYLES DE BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--blanc-creme); color: var(--texte-sombre); line-height: 1.6; overflow-x: hidden; }
 
-        /* --- HEADER & LOGO --- */
         header {
             background-color: var(--gris-anthracite);
             padding: 15px 20px;
@@ -38,7 +34,6 @@
         .logo-img { max-height: 80px; width: auto; transition: transform 0.3s ease; }
         .logo-img:hover { transform: scale(1.03); }
 
-        /* --- NAVIGATION --- */
         nav {
             background-color: var(--gris-clair);
             display: flex;
@@ -57,7 +52,66 @@
         }
         nav a:hover { color: var(--bleu-atelier); }
 
-        /* --- HERO SECTION --- */
+        /* BANDEAU RDV */
+        .bandeau-rdv {
+            background-color: var(--bleu-atelier);
+            color: white;
+            padding: 13px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            position: relative;
+        }
+        .bandeau-rdv-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: center;
+            max-width: 900px;
+        }
+        .bandeau-rdv-icone { font-size: 20px; flex-shrink: 0; line-height: 1; }
+        .bandeau-rdv-texte { font-size: 14px; line-height: 1.45; }
+        .bandeau-rdv-texte strong { font-size: 14px; font-weight: 700; }
+        .bandeau-rdv-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: white;
+            color: var(--bleu-atelier);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 7px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
+            flex-shrink: 0;
+        }
+        .bandeau-rdv-cta:hover { background-color: var(--rouge-accent); color: white; transform: scale(1.04); }
+        .bandeau-rdv-close {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.55);
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+        .bandeau-rdv-close:hover { color: white; }
+        @media (max-width: 600px) {
+            .bandeau-rdv { padding: 12px 40px 12px 16px; }
+            .bandeau-rdv-inner { flex-direction: column; text-align: center; gap: 9px; }
+            .bandeau-rdv-cta { width: 100%; justify-content: center; }
+        }
+
+        /* HERO */
         .hero {
             position: relative;
             color: white;
@@ -84,20 +138,12 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(13, 70, 146, 0.55) 0%,
-                rgba(28, 28, 28, 0.78) 100%
-            );
+            background: linear-gradient(to bottom, rgba(13,70,146,0.55) 0%, rgba(28,28,28,0.78) 100%);
             z-index: 1;
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero-content { position: relative; z-index: 2; }
         .hero h1 { font-size: 32px; margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
         .hero p { font-size: 17px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); opacity: 0.92; }
-        
         .btn {
             display: inline-block;
             background-color: var(--bleu-atelier);
@@ -108,11 +154,11 @@
             font-weight: bold;
             transition: 0.3s;
             margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .btn:hover { background-color: var(--rouge-accent); transform: scale(1.05); }
 
-        /* --- GRID SERVICES --- */
+        /* SERVICES */
         .section-padding { padding: 50px 20px; }
         .grid-services {
             display: grid;
@@ -131,32 +177,17 @@
             transition: 0.3s;
         }
         .carte-service:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.13); }
-
-        /* --- PHOTO DE SERVICE --- */
-        .carte-photo {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
+        .carte-photo { width: 100%; height: 190px; object-fit: cover; display: block; transition: transform 0.5s ease; }
         .carte-service:hover .carte-photo { transform: scale(1.04); }
-        .carte-photo-wrapper {
-            overflow: hidden;
-            height: 190px;
-        }
-
+        .carte-photo-wrapper { overflow: hidden; height: 190px; }
         .carte-texte { padding: 20px; }
 
-        /* --- REVEAL ANIMATION --- */
+        /* REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- CONTACT CONTAINER & MODULES --- */
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* CONTACT */
+        .contact-container { max-width: 600px; margin: 0 auto; }
         .contact-box {
             background: white;
             padding: 30px;
@@ -164,27 +195,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             border-left: 5px solid var(--bleu-atelier);
         }
-        .contact-box h4 {
-            font-size: 22px;
-            color: var(--gris-anthracite);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--gris-clair);
-            padding-bottom: 10px;
-        }
-        .contact-box p {
-            font-size: 15px;
-            margin-bottom: 10px;
-            color: var(--texte-sombre);
-        }
-
-        /* --- BOUTONS DE CONTACT --- */
-        .icon-inline {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
+        .contact-box h4 { font-size: 22px; color: var(--gris-anthracite); margin-bottom: 20px; border-bottom: 2px solid var(--gris-clair); padding-bottom: 10px; }
+        .contact-box p { font-size: 15px; margin-bottom: 10px; color: var(--texte-sombre); }
+        .icon-inline { width: 20px; height: 20px; vertical-align: middle; margin-right: 10px; flex-shrink: 0; }
         .btn-contact {
             display: inline-flex;
             align-items: center;
@@ -202,15 +215,10 @@
             border: none;
             font-size: 15px;
         }
-        .btn-contact:hover {
-            background-color: var(--bleu-atelier);
-            transform: scale(1.02);
-        }
-        .btn-contact .icon-inline {
-            color: var(--rouge-accent); 
-        }
+        .btn-contact:hover { background-color: var(--bleu-atelier); transform: scale(1.02); }
+        .btn-contact .icon-inline { color: var(--rouge-accent); }
 
-        /* --- FOOTER & SOCIALS --- */
+        /* FOOTER */
         footer {
             background-color: var(--gris-anthracite);
             color: white;
@@ -219,26 +227,10 @@
             font-size: 13px;
             border-top: 4px solid var(--bleu-atelier);
         }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .social-icons a {
-            color: white;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-        .social-icons a:hover {
-            color: var(--bleu-atelier);
-            transform: scale(1.1);
-        }
-        .social-svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
-        }
+        .social-icons { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+        .social-icons a { color: white; transition: color 0.3s, transform 0.3s; display: inline-block; }
+        .social-icons a:hover { color: var(--bleu-atelier); transform: scale(1.1); }
+        .social-svg { width: 32px; height: 32px; fill: currentColor; }
     </style>
 </head>
 <body>
@@ -253,87 +245,81 @@
         <a href="apropos.html">A propos</a>
     </nav>
 
-    <!-- HERO avec photo de fond -->
+    <!-- BANDEAU RENDEZ-VOUS -->
+    <div class="bandeau-rdv" id="bandeauRdv">
+        <div class="bandeau-rdv-inner">
+            <span class="bandeau-rdv-icone">🔧</span>
+            <div class="bandeau-rdv-texte">
+                <strong>Réparations sur rendez-vous uniquement</strong> — Les vélos déposés sans rendez-vous ne peuvent pas être acceptés.
+            </div>
+            <a href="tel:0683306032" class="bandeau-rdv-cta">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg>
+                Prendre RDV
+            </a>
+        </div>
+        <button class="bandeau-rdv-close" onclick="fermerBandeau()" aria-label="Fermer">✕</button>
+    </div>
+
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Vente & Réparation Vélos</h1>
-            <p>Votre expert cycle sur la Côte des Isles à Barneville-Carteret.<BR>Vélo de route, Gravel, VTC, VTT, Vélo électrique</p>
+            <p>Votre expert cycle sur la Côte des Isles à Barneville-Carteret.<br>Vélo de route, Gravel, VTC, VTT, Vélo électrique</p>
             <a href="#contact" class="btn">Nous rendre visite</a>
         </div>
     </section>
 
-    <!-- SERVICES avec photos -->
+    <!-- SERVICES -->
     <section class="section-padding" id="services">
         <div class="grid-services">
-
             <div class="carte-service reveal">
                 <div class="carte-photo-wrapper">
-                    <img 
-                        src="rep.png" 
-                        alt="Réparation et entretien de vélo en atelier"
-                        class="carte-photo"
-                        loading="lazy"
-                    >
+                    <img src="rep.png" alt="Réparation et entretien de vélo en atelier" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
                     <h3>Réparation & Entretien</h3>
                     <p>Révision complète, freinage, transmission. Benjamin prend soin de votre monture, peu importe la marque.</p>
                 </div>
             </div>
-
             <div class="carte-service reveal">
                 <div class="carte-photo-wrapper">
-                    <img 
-                        src="vente.png" 
-                        alt="Vente de vélos neufs et d'occasion VTT VTC électrique"
-                        class="carte-photo"
-                        loading="lazy"
-                    >
+                    <img src="vente.png" alt="Vente de vélos neufs et d'occasion VTT VTC électrique" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
                     <h3>Vente Neuf & Occasion</h3>
                     <p>Une sélection de vélos adaptés à nos chemins normands : VTT, VTC, Électrique.</p>
                 </div>
             </div>
-
             <div class="carte-service reveal">
                 <div class="carte-photo-wrapper">
-                    <img 
-                        src="acc.png" 
-                        alt="Accessoires et pièces vélo casques antivols"
-                        class="carte-photo"
-                        loading="lazy"
-                    >
+                    <img src="acc.png" alt="Accessoires et pièces vélo casques antivols" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
                     <h3>Accessoires & Pièces</h3>
                     <p>Équipez-vous pour l'aventure : casques, antivols, pneus et composants de qualité.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="section-padding" id="contact" style="background-color: #f9f9f9;">
         <div class="contact-container">
             <div class="contact-box reveal">
                 <h4>Infos Pratiques</h4>
                 <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
-                
                 <a href="https://www.google.com/maps/dir//L'Atelier+B.+15+Rte+de+la+Lib%C3%A9ration+50270+Barneville-Carteret" target="_blank" class="btn-contact">
-                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     Itinéraire Google Maps
                 </a>
-                
                 <a href="tel:0683306032" class="btn-contact">
-                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg> 
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg>
                     Appeler (06 83 30 60 32)
                 </a>
-                
                 <a href="mailto:latelierb50@gmail.com" class="btn-contact">
-                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     latelierb50@gmail.com
                 </a>
             </div>
@@ -359,8 +345,15 @@
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function fermerBandeau() {
+            document.getElementById('bandeauRdv').style.display = 'none';
+            sessionStorage.setItem('bandeauRdvFerme', '1');
+        }
+        if (sessionStorage.getItem('bandeauRdvFerme') === '1') {
+            document.getElementById('bandeauRdv').style.display = 'none';
+        }
     </script>
 </body>
 </html>
