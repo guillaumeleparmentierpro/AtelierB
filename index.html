@@ -472,48 +472,50 @@
         Créé par : <a href="https://cotentinwebstudio.fr/index.html" target="_blank" style="color: var(--bleu-atelier); text-decoration: none; font-weight: bold;">Cotentin Web Studio</a></p>
     </footer>
 
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+<!-- BOUTON RETOUR EN HAUT -->
+    <button class="btn-top" id="btnTop" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function fermerBandeau() {
+            document.getElementById('bandeauRdv').style.display = 'none';
+            sessionStorage.setItem('bandeauRdvFerme', '1');
+        }
+        if (sessionStorage.getItem('bandeauRdvFerme') === '1') {
+            document.getElementById('bandeauRdv').style.display = 'none';
+        }
+
+        const piste = document.getElementById('marquesPiste');
+        piste.innerHTML += piste.innerHTML;
+
+        const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+        const aujourdhui = jours[new Date().getDay()];
+        document.querySelectorAll('.horaires-table tr').forEach(tr => {
+            if (tr.querySelector('td')?.textContent.trim().toLowerCase() === aujourdhui) {
+                tr.style.background = '#eef3fb';
+                tr.style.borderRadius = '6px';
+                tr.querySelector('td').style.color = 'var(--bleu-atelier)';
+            }
         });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    function fermerBandeau() {
-        document.getElementById('bandeauRdv').style.display = 'none';
-        sessionStorage.setItem('bandeauRdvFerme', '1');
-    }
-    if (sessionStorage.getItem('bandeauRdvFerme') === '1') {
-        document.getElementById('bandeauRdv').style.display = 'none';
-    }
+        const btnTop = document.getElementById('btnTop');
+        window.addEventListener('scroll', () => {
+            btnTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 
-    /* Bande marques — duplication pour boucle infinie */
-    const piste = document.getElementById('marquesPiste');
-    piste.innerHTML += piste.innerHTML;
-    const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-const aujourdhui = jours[new Date().getDay()];
-document.querySelectorAll('.horaires-table tr').forEach(tr => {
-    if (tr.querySelector('td')?.textContent.trim().toLowerCase() === aujourdhui) {
-        tr.style.background = '#eef3fb';
-        tr.style.borderRadius = '6px';
-        tr.querySelector('td').style.color = 'var(--bleu-atelier)';
-    }
-});
-    /* Bouton retour en haut */
-const btnTop = document.getElementById('btnTop');
-window.addEventListener('scroll', () => {
-    btnTop.classList.toggle('visible', window.scrollY > 300);
-});
-btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-</script>
-    <!-- BOUTON RETOUR EN HAUT -->
-<button class="btn-top" id="btnTop" aria-label="Retour en haut">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-</button>
 </body>
 </html>
