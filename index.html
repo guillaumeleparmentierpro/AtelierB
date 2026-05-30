@@ -99,25 +99,18 @@
     align-items: center;
 }
 .bandeau-marques:hover .marques-piste { animation-play-state: paused; }
-.marque-pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: white;
-    border-radius: 24px;
-    padding: 8px 20px;
-    border: 1.5px solid #dde5f0;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--gris-anthracite);
-    white-space: nowrap;
+.marque-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
     flex-shrink: 0;
+    filter: grayscale(100%);
+    opacity: 0.65;
+    transition: filter 0.3s, opacity 0.3s;
 }
-.marque-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--bleu-atelier);
-    flex-shrink: 0;
+.marque-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 @keyframes defilement {
     from { transform: translateX(0); }
@@ -388,14 +381,14 @@
 <div class="bandeau-marques">
     <p class="marques-label">Marques disponibles</p>
     <div class="marques-piste" id="marquesPiste">
-        <div class="marque-pill"><span class="marque-dot"></span>Sunn</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Shimano</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Giant</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Abus</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Italia</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Inspyre</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Bosch</div>
-        <div class="marque-pill"><span class="marque-dot"></span>Cannondale</div>
+        <img src="logos/trek.png" alt="Trek" class="marque-logo">
+        <img src="logos/shimano.png" alt="Shimano" class="marque-logo">
+        <img src="logos/giant.png" alt="Giant" class="marque-logo">
+        <img src="logos/specialized.png" alt="Specialized" class="marque-logo">
+        <img src="logos/mavic.png" alt="Mavic" class="marque-logo">
+        <img src="logos/sram.png" alt="SRAM" class="marque-logo">
+        <img src="logos/bosch.png" alt="Bosch" class="marque-logo">
+        <img src="logos/cannondale.png" alt="Cannondale" class="marque-logo">
     </div>
 </div>
 
