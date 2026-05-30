@@ -9,6 +9,39 @@
     <meta name="description" content="L'Atelier B. à Barneville-Carteret : entretien, réparation et vente de vélos neufs et d'occasion. Benjamin, expert passionné, vous accueille sur la Côte des Isles.">
     
     <style>
+.horaires {
+    margin: 16px 0 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gris-clair);
+}
+.horaires-titre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gris-anthracite);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.horaires-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.horaires-table tr { border-bottom: 1px solid var(--gris-clair); }
+.horaires-table tr:last-child { border-bottom: none; }
+.horaires-table td {
+    padding: 6px 4px;
+    color: var(--texte-sombre);
+}
+.horaires-table td:first-child {
+    font-weight: 600;
+    width: 90px;
+    color: var(--gris-anthracite);
+}
+.horaires-table td.fermé {
+    color: var(--rouge-accent);
+    font-weight: 600;
+}
         /* BANDE MARQUES */
 .bandeau-marques {
     background-color: #f0f4fa;
@@ -373,6 +406,18 @@
             <div class="contact-box reveal">
                 <h4>Infos Pratiques</h4>
                 <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
+<div class="horaires">
+    <h5 class="horaires-titre">🕐 Horaires</h5>
+    <table class="horaires-table">
+        <tr><td>Lundi</td><td class="fermé">Fermé</td></tr>
+        <tr><td>Mardi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+        <tr><td>Mercredi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+        <tr><td>Jeudi</td><td>14:30 – 18:30</td></tr>
+        <tr><td>Vendredi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+        <tr><td>Samedi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+        <tr><td>Dimanche</td><td class="fermé">Fermé</td></tr>
+    </table>
+</div>
                 <a href="https://www.google.com/maps/dir//L'Atelier+B.+15+Rte+de+la+Lib%C3%A9ration+50270+Barneville-Carteret" target="_blank" class="btn-contact">
                     <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     Itinéraire Google Maps
@@ -421,6 +466,15 @@
     /* Bande marques — duplication pour boucle infinie */
     const piste = document.getElementById('marquesPiste');
     piste.innerHTML += piste.innerHTML;
+    const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const aujourdhui = jours[new Date().getDay()];
+document.querySelectorAll('.horaires-table tr').forEach(tr => {
+    if (tr.querySelector('td')?.textContent.trim().toLowerCase() === aujourdhui) {
+        tr.style.background = '#eef3fb';
+        tr.style.borderRadius = '6px';
+        tr.querySelector('td').style.color = 'var(--bleu-atelier)';
+    }
+});
 </script>
 </body>
 </html>
