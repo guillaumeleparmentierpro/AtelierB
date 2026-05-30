@@ -14,6 +14,33 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="theme-color" content="#0d4692">
     <style>
+        /* BOUTON RETOUR EN HAUT */
+.btn-top {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background-color: var(--bleu-atelier);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(13,70,146,0.35);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s, background-color 0.2s;
+    z-index: 999;
+}
+.btn-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.btn-top:hover { background-color: var(--rouge-accent); }
+.btn-top svg { width: 22px; height: 22px; stroke: white; }
 .horaires {
     margin: 16px 0 10px;
     padding-top: 14px;
@@ -480,6 +507,20 @@ document.querySelectorAll('.horaires-table tr').forEach(tr => {
         tr.querySelector('td').style.color = 'var(--bleu-atelier)';
     }
 });
+    /* Bouton retour en haut */
+const btnTop = document.getElementById('btnTop');
+window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('visible', window.scrollY > 300);
+});
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
+    <!-- BOUTON RETOUR EN HAUT -->
+<button class="btn-top" id="btnTop" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
 </body>
 </html>
