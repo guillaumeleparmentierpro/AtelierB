@@ -9,6 +9,55 @@
     <meta name="description" content="L'Atelier B. à Barneville-Carteret : entretien, réparation et vente de vélos neufs et d'occasion. Benjamin, expert passionné, vous accueille sur la Côte des Isles.">
     
     <style>
+        /* BANDE MARQUES */
+.bandeau-marques {
+    background-color: #f0f4fa;
+    padding: 16px 0;
+    border-top: 3px solid var(--bleu-atelier);
+    border-bottom: 3px solid var(--bleu-atelier);
+    overflow: hidden;
+}
+.marques-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--bleu-atelier);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+.marques-piste {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: defilement 22s linear infinite;
+    align-items: center;
+}
+.bandeau-marques:hover .marques-piste { animation-play-state: paused; }
+.marque-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 24px;
+    padding: 8px 20px;
+    border: 1.5px solid #dde5f0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gris-anthracite);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.marque-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--bleu-atelier);
+    flex-shrink: 0;
+}
+@keyframes defilement {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
         :root {
             --bleu-atelier: #0d4692;
             --rouge-accent: #ff5757;
@@ -270,6 +319,20 @@
             <a href="#contact" class="btn">Nous rendre visite</a>
         </div>
     </section>
+    <!-- BANDE DÉFILANTE MARQUES -->
+<div class="bandeau-marques">
+    <p class="marques-label">Marques disponibles</p>
+    <div class="marques-piste" id="marquesPiste">
+        <div class="marque-pill"><span class="marque-dot"></span>Trek</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Shimano</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Giant</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Specialized</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Mavic</div>
+        <div class="marque-pill"><span class="marque-dot"></span>SRAM</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Bosch</div>
+        <div class="marque-pill"><span class="marque-dot"></span>Cannondale</div>
+    </div>
+</div>
 
     <!-- SERVICES -->
     <section class="section-padding" id="services">
@@ -339,21 +402,25 @@
         Créé par : <a href="https://cotentinwebstudio.fr/index.html" target="_blank" style="color: var(--bleu-atelier); text-decoration: none; font-weight: bold;">Cotentin Web Studio</a></p>
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        function fermerBandeau() {
-            document.getElementById('bandeauRdv').style.display = 'none';
-            sessionStorage.setItem('bandeauRdvFerme', '1');
-        }
-        if (sessionStorage.getItem('bandeauRdvFerme') === '1') {
-            document.getElementById('bandeauRdv').style.display = 'none';
-        }
-    </script>
+    function fermerBandeau() {
+        document.getElementById('bandeauRdv').style.display = 'none';
+        sessionStorage.setItem('bandeauRdvFerme', '1');
+    }
+    if (sessionStorage.getItem('bandeauRdvFerme') === '1') {
+        document.getElementById('bandeauRdv').style.display = 'none';
+    }
+
+    /* Bande marques — duplication pour boucle infinie */
+    const piste = document.getElementById('marquesPiste');
+    piste.innerHTML += piste.innerHTML;
+</script>
 </body>
 </html>
