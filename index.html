@@ -4,125 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    
     <title>L'Atelier B. | Vente et Réparation de Vélos à Barneville-Carteret</title>
     <meta name="description" content="L'Atelier B. à Barneville-Carteret : entretien, réparation et vente de vélos neufs et d'occasion. Benjamin, expert passionné, vous accueille sur la Côte des Isles.">
     <link rel="manifest" href="site.webmanifest">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<meta name="theme-color" content="#0d4692">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#0d4692">
     <style>
-        /* BOUTON RETOUR EN HAUT */
-.btn-top {
-    position: fixed;
-    bottom: 28px;
-    right: 24px;
-    width: 48px;
-    height: 48px;
-    background-color: var(--bleu-atelier);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 14px rgba(13,70,146,0.35);
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.3s, transform 0.3s, background-color 0.2s;
-    z-index: 999;
-}
-.btn-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.btn-top:hover { background-color: var(--rouge-accent); }
-.btn-top svg { width: 22px; height: 22px; stroke: white; }
-.horaires {
-    margin: 16px 0 10px;
-    padding-top: 14px;
-    border-top: 1px solid var(--gris-clair);
-}
-.horaires-titre {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--gris-anthracite);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-.horaires-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-}
-.horaires-table tr { border-bottom: 1px solid var(--gris-clair); }
-.horaires-table tr:last-child { border-bottom: none; }
-.horaires-table td {
-    padding: 6px 4px;
-    color: var(--texte-sombre);
-}
-.horaires-table td:first-child {
-    font-weight: 600;
-    width: 90px;
-    color: var(--gris-anthracite);
-}
-.horaires-table td.fermé {
-    color: var(--rouge-accent);
-    font-weight: 600;
-}
-        /* BANDE MARQUES */
-.bandeau-marques {
-    background-color: #ffffff;  /* fond blanc au lieu de #f0f4fa */
-    padding: 20px 0;
-    border-top: 3px solid var(--bleu-atelier);
-    border-bottom: 3px solid var(--bleu-atelier);
-    overflow: hidden;
-}
-.marques-label {
-    text-align: center;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--bleu-atelier);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-.marques-piste {
-    display: flex;
-    gap: 40px;
-    width: max-content;
-    animation: defilement 22s linear infinite;
-    align-items: center;
-}
-.bandeau-marques:hover .marques-piste { animation-play-state: paused; }
-.marque-logo {
-    height: 44px;
-    width: auto;
-    object-fit: contain;
-    flex-shrink: 0;
-    filter: none;          /* ← supprime le grayscale */
-    opacity: 1;            /* ← opacité pleine */
-    border-radius: 8px;    /* ← arrondit les logos à fond coloré */
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.marque-logo:hover {
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-        .marque-logo.dark-bg {
-    background-color: #1c1c1c;
-    padding: 6px 12px;
-    border-radius: 8px;
-}
-@keyframes defilement {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
+        /* =====================
+           VARIABLES & RESET
+        ===================== */
         :root {
             --bleu-atelier: #0d4692;
             --rouge-accent: #ff5757;
@@ -135,6 +28,9 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--blanc-creme); color: var(--texte-sombre); line-height: 1.6; overflow-x: hidden; }
 
+        /* =====================
+           HEADER & NAV
+        ===================== */
         header {
             background-color: var(--gris-anthracite);
             padding: 15px 20px;
@@ -166,7 +62,9 @@
         }
         nav a:hover { color: var(--bleu-atelier); }
 
-        /* BANDEAU RDV */
+        /* =====================
+           BANDEAU RDV
+        ===================== */
         .bandeau-rdv {
             background-color: var(--bleu-atelier);
             color: white;
@@ -225,7 +123,9 @@
             .bandeau-rdv-cta { width: 100%; justify-content: center; }
         }
 
-        /* HERO */
+        /* =====================
+           HERO
+        ===================== */
         .hero {
             position: relative;
             color: white;
@@ -272,7 +172,80 @@
         }
         .btn:hover { background-color: var(--rouge-accent); transform: scale(1.05); }
 
-        /* SERVICES */
+        /* =====================
+           BANDEAU MARQUES
+        ===================== */
+        .bandeau-marques {
+            background-color: #f5f7fa;
+            padding: 18px 0 20px;
+            border-top: 3px solid var(--bleu-atelier);
+            border-bottom: 3px solid var(--bleu-atelier);
+            overflow: hidden;
+        }
+        .marques-label {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--bleu-atelier);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .marques-piste {
+            display: flex;
+            gap: 32px;
+            width: max-content;
+            animation: defilement 30s linear infinite;
+            align-items: center;
+            padding: 0 16px;
+        }
+        .bandeau-marques:hover .marques-piste { animation-play-state: paused; }
+
+        /* Base commune à tous les logos */
+        .marque-logo {
+            flex-shrink: 0;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+        }
+        .marque-logo:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        }
+
+        /* Logos à fond NOIR (ABUS, SUNN, Shimano, Wilier, Flow, Granville) */
+        .marque-logo.dark-bg {
+            background-color: #1c1c1c;
+            padding: 8px 16px;
+            height: 58px;
+            width: auto;
+        }
+
+        /* Logos à fond BLANC (Selle Italia, SRAM) */
+        .marque-logo.light-bg {
+            background-color: #ffffff;
+            padding: 8px 16px;
+            height: 58px;
+            width: auto;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Logos à fond COLORÉ (Mavic jaune, SMP rouge, Zéfal rouge) */
+        .marque-logo.color-bg {
+            height: 58px;
+            width: auto;
+            padding: 0;
+        }
+
+        @keyframes defilement {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* =====================
+           SERVICES
+        ===================== */
         .section-padding { padding: 50px 20px; }
         .grid-services {
             display: grid;
@@ -296,11 +269,15 @@
         .carte-photo-wrapper { overflow: hidden; height: 190px; }
         .carte-texte { padding: 20px; }
 
-        /* REVEAL */
+        /* =====================
+           REVEAL
+        ===================== */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* CONTACT */
+        /* =====================
+           CONTACT
+        ===================== */
         .contact-container { max-width: 600px; margin: 0 auto; }
         .contact-box {
             background: white;
@@ -332,7 +309,46 @@
         .btn-contact:hover { background-color: var(--bleu-atelier); transform: scale(1.02); }
         .btn-contact .icon-inline { color: var(--rouge-accent); }
 
-        /* FOOTER */
+        /* =====================
+           HORAIRES
+        ===================== */
+        .horaires {
+            margin: 16px 0 10px;
+            padding-top: 14px;
+            border-top: 1px solid var(--gris-clair);
+        }
+        .horaires-titre {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gris-anthracite);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .horaires-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .horaires-table tr { border-bottom: 1px solid var(--gris-clair); }
+        .horaires-table tr:last-child { border-bottom: none; }
+        .horaires-table td {
+            padding: 6px 4px;
+            color: var(--texte-sombre);
+        }
+        .horaires-table td:first-child {
+            font-weight: 600;
+            width: 90px;
+            color: var(--gris-anthracite);
+        }
+        .horaires-table td.fermé {
+            color: var(--rouge-accent);
+            font-weight: 600;
+        }
+
+        /* =====================
+           FOOTER
+        ===================== */
         footer {
             background-color: var(--gris-anthracite);
             color: white;
@@ -345,6 +361,33 @@
         .social-icons a { color: white; transition: color 0.3s, transform 0.3s; display: inline-block; }
         .social-icons a:hover { color: var(--bleu-atelier); transform: scale(1.1); }
         .social-svg { width: 32px; height: 32px; fill: currentColor; }
+
+        /* =====================
+           BOUTON RETOUR EN HAUT
+        ===================== */
+        .btn-top {
+            position: fixed;
+            bottom: 28px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--bleu-atelier);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(13,70,146,0.35);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.3s, transform 0.3s, background-color 0.2s;
+            z-index: 999;
+        }
+        .btn-top.visible { opacity: 1; transform: translateY(0); }
+        .btn-top:hover { background-color: var(--rouge-accent); }
+        .btn-top svg { width: 22px; height: 22px; stroke: white; }
     </style>
 </head>
 <body>
@@ -364,7 +407,8 @@
         <div class="bandeau-rdv-inner">
             <span class="bandeau-rdv-icone">🔧</span>
             <div class="bandeau-rdv-texte">
-                <strong>Réparations sur rendez-vous uniquement</strong><BR> Les vélos déposés sans rendez-vous ne peuvent pas être acceptés.
+                <strong>Réparations sur rendez-vous uniquement</strong><br>
+                Les vélos déposés sans rendez-vous ne peuvent pas être acceptés.
             </div>
             <a href="tel:0683306032" class="bandeau-rdv-cta">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .81 2.81 2 2 0 0 1-.45 2.11L18.09 14.91A2 2 0 0 1 22 16.92z"></path></svg>
@@ -379,21 +423,32 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Vente & Réparation Vélos</h1>
+            <h1>Vente &amp; Réparation Vélos</h1>
             <p>Votre expert cycle sur la Côte des Isles à Barneville-Carteret.<br>Vélo de route, Gravel, VTC, VTT, Vélo électrique</p>
             <a href="#contact" class="btn">Nous rendre visite</a>
         </div>
     </section>
+
     <!-- BANDE DÉFILANTE MARQUES -->
-<div class="bandeau-marques">
-    <p class="marques-label">Marques disponibles</p>
-    <div class="marques-piste" id="marquesPiste">
-        <img src="logo-abus.svg" alt="Abus" class="marque-logo">
-        <img src="logo-suun.png" alt="Sunn" class="marque-logo">
-        <img src="logo-amflow.png" alt="Amflow" class="marque-logo">
-        <img src="logo-inspyre.jpg" alt="Inspyre" class="marque-logo">
+    <div class="bandeau-marques">
+        <p class="marques-label">Marques disponibles</p>
+        <div class="marques-piste" id="marquesPiste">
+            <!-- Fond noir -->
+            <img src="abus.png"               alt="Abus"             class="marque-logo dark-bg">
+            <img src="SUNN-logo2021-noir.png"  alt="Sunn"             class="marque-logo dark-bg">
+            <img src="shimano.png"             alt="Shimano"          class="marque-logo dark-bg">
+            <img src="wil.png"                 alt="Wilier Triestina" class="marque-logo dark-bg">
+            <img src="flow.png"                alt="Flow"             class="marque-logo dark-bg">
+            <img src="granville.png"           alt="Granville"        class="marque-logo dark-bg">
+            <!-- Fond blanc -->
+            <img src="selle-italia.png"        alt="Selle Italia"     class="marque-logo light-bg">
+            <img src="sram.png"                alt="SRAM"             class="marque-logo light-bg">
+            <!-- Fond coloré -->
+            <img src="mavic.jpg"               alt="Mavic"            class="marque-logo color-bg">
+            <img src="smp.png"                 alt="Selle SMP"        class="marque-logo color-bg">
+            <img src="zephal.png"              alt="Zéfal"            class="marque-logo color-bg">
+        </div>
     </div>
-</div>
 
     <!-- SERVICES -->
     <section class="section-padding" id="services">
@@ -403,7 +458,7 @@
                     <img src="rep.png" alt="Réparation et entretien de vélo en atelier" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
-                    <h3>Réparation & Entretien</h3>
+                    <h3>Réparation &amp; Entretien</h3>
                     <p>Révision complète, freinage, transmission, suspension. Une prise en charge complète de votre monture, peu importe la marque.</p>
                 </div>
             </div>
@@ -412,7 +467,7 @@
                     <img src="pos.png" alt="Positionnement & Etude posturale" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
-                    <h3>Positionnement & Etude posturale</h3>
+                    <h3>Positionnement &amp; Etude posturale</h3>
                     <p>Optimisez votre confort, votre efficacité et votre plaisir de rouler grâce à une analyse personnalisée de votre position sur le vélo : Bike fitting, Foot fitting et Saddle fitting.</p>
                 </div>
             </div>
@@ -421,7 +476,7 @@
                     <img src="vente.png" alt="Vente de vélos neufs et d'occasion VTT VTC électrique" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
-                    <h3>Vente Neuf & Occasion</h3>
+                    <h3>Vente Neuf &amp; Occasion</h3>
                     <p>Une sélection de vélos pour tous les usages : Electrique, route, gravel, VTT, VTC et enfant.<br>(Sunn, Wilier Triestina, Amflow, Granville)</p>
                 </div>
             </div>
@@ -430,7 +485,7 @@
                     <img src="acc.png" alt="Accessoires et pièces vélo casques antivols" class="carte-photo" loading="lazy">
                 </div>
                 <div class="carte-texte">
-                    <h3>Accessoires & Pièces</h3>
+                    <h3>Accessoires &amp; Pièces</h3>
                     <p>Équipez-vous pour l'aventure : casques, antivols, pneus et composants de qualité.<br>(Shimano, Abus, Zefal, Sram, Selle Italia, SMP, Mavic)</p>
                 </div>
             </div>
@@ -443,18 +498,18 @@
             <div class="contact-box reveal">
                 <h4>Infos Pratiques</h4>
                 <p>📍 15 route de la Libération, 50270 Barneville-Carteret</p>
-<div class="horaires">
-    <h5 class="horaires-titre">🕐 Horaires</h5>
-    <table class="horaires-table">
-        <tr><td>Lundi</td><td class="fermé">Fermé</td></tr>
-        <tr><td>Mardi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
-        <tr><td>Mercredi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
-        <tr><td>Jeudi</td><td>14:30 – 18:30</td></tr>
-        <tr><td>Vendredi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
-        <tr><td>Samedi</td><td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
-        <tr><td>Dimanche</td><td class="fermé">Fermé</td></tr>
-    </table>
-</div>
+                <div class="horaires">
+                    <h5 class="horaires-titre">🕐 Horaires</h5>
+                    <table class="horaires-table">
+                        <tr><td>Lundi</td>    <td class="fermé">Fermé</td></tr>
+                        <tr><td>Mardi</td>    <td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+                        <tr><td>Mercredi</td> <td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+                        <tr><td>Jeudi</td>    <td>14:30 – 18:30</td></tr>
+                        <tr><td>Vendredi</td> <td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+                        <tr><td>Samedi</td>   <td>10:00 – 12:00 / 14:30 – 18:30</td></tr>
+                        <tr><td>Dimanche</td> <td class="fermé">Fermé</td></tr>
+                    </table>
+                </div>
                 <a href="https://www.google.com/maps/dir//L'Atelier+B.+15+Rte+de+la+Lib%C3%A9ration+50270+Barneville-Carteret" target="_blank" class="btn-contact">
                     <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     Itinéraire Google Maps
@@ -484,7 +539,7 @@
         Créé par : <a href="https://cotentinwebstudio.fr/index.html" target="_blank" style="color: var(--bleu-atelier); text-decoration: none; font-weight: bold;">Cotentin Web Studio</a></p>
     </footer>
 
-<!-- BOUTON RETOUR EN HAUT -->
+    <!-- BOUTON RETOUR EN HAUT -->
     <button class="btn-top" id="btnTop" aria-label="Retour en haut">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
@@ -492,6 +547,7 @@
     </button>
 
     <script>
+        // Reveal au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -499,6 +555,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Bandeau RDV
         function fermerBandeau() {
             document.getElementById('bandeauRdv').style.display = 'none';
             sessionStorage.setItem('bandeauRdvFerme', '1');
@@ -507,19 +564,23 @@
             document.getElementById('bandeauRdv').style.display = 'none';
         }
 
+        // Défilement infini des marques : duplication du contenu
         const piste = document.getElementById('marquesPiste');
         piste.innerHTML += piste.innerHTML;
 
+        // Surbrillance du jour courant dans les horaires
         const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
         const aujourdhui = jours[new Date().getDay()];
         document.querySelectorAll('.horaires-table tr').forEach(tr => {
-            if (tr.querySelector('td')?.textContent.trim().toLowerCase() === aujourdhui) {
+            const premiereTd = tr.querySelector('td');
+            if (premiereTd && premiereTd.textContent.trim().toLowerCase() === aujourdhui) {
                 tr.style.background = '#eef3fb';
                 tr.style.borderRadius = '6px';
-                tr.querySelector('td').style.color = 'var(--bleu-atelier)';
+                premiereTd.style.color = 'var(--bleu-atelier)';
             }
         });
 
+        // Bouton retour en haut
         const btnTop = document.getElementById('btnTop');
         window.addEventListener('scroll', () => {
             btnTop.classList.toggle('visible', window.scrollY > 300);
