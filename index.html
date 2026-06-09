@@ -76,8 +76,8 @@
 }
         /* BANDE MARQUES */
 .bandeau-marques {
-    background-color: #f0f4fa;
-    padding: 16px 0;
+    background-color: #ffffff;  /* fond blanc au lieu de #f0f4fa */
+    padding: 20px 0;
     border-top: 3px solid var(--bleu-atelier);
     border-bottom: 3px solid var(--bleu-atelier);
     overflow: hidden;
@@ -100,17 +100,24 @@
 }
 .bandeau-marques:hover .marques-piste { animation-play-state: paused; }
 .marque-logo {
-    height: 40px;
+    height: 44px;
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
-    filter: grayscale(100%);
-    opacity: 0.65;
-    transition: filter 0.3s, opacity 0.3s;
+    filter: none;          /* ← supprime le grayscale */
+    opacity: 1;            /* ← opacité pleine */
+    border-radius: 8px;    /* ← arrondit les logos à fond coloré */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .marque-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+        .marque-logo.dark-bg {
+    background-color: #1c1c1c;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 @keyframes defilement {
     from { transform: translateX(0); }
