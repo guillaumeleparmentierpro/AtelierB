@@ -214,21 +214,13 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.18);
         }
 
-        /* Logos à fond NOIR (ABUS, SUNN, Shimano, Wilier, Flow, Granville) */
-        .marque-logo.dark-bg {
-            background-color: #1c1c1c;
-            padding: 8px 16px;
-            height: 58px;
-            width: auto;
-        }
-
-        /* Logos à fond BLANC (Selle Italia, SRAM) */
+        /* Logos à fond neutre (blanc ou transparent) */
         .marque-logo.light-bg {
             background-color: #ffffff;
             padding: 8px 16px;
             height: 58px;
             width: auto;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #e8e8e8;
         }
 
         /* Logos à fond COLORÉ (Mavic jaune, SMP rouge, Zéfal rouge) */
@@ -433,14 +425,12 @@
     <div class="bandeau-marques">
         <p class="marques-label">Marques disponibles</p>
         <div class="marques-piste" id="marquesPiste">
-            <!-- Fond noir -->
-            <img src="abus.png"               alt="Abus"             class="marque-logo dark-bg">
-            <img src="SUNN-logo2021-noir.png"  alt="Sunn"             class="marque-logo dark-bg">
-            <img src="shimano.png"             alt="Shimano"          class="marque-logo dark-bg">
-            <img src="wil.png"                 alt="Wilier Triestina" class="marque-logo dark-bg">
-            <img src="flow.png"                alt="Flow"             class="marque-logo dark-bg">
-            <img src="granville.png"           alt="Granville"        class="marque-logo dark-bg">
-            <!-- Fond blanc -->
+            <img src="abus.png"               alt="Abus"             class="marque-logo light-bg">
+            <img src="SUNN-logo2021-noir.png"  alt="Sunn"             class="marque-logo light-bg">
+            <img src="shimano.png"             alt="Shimano"          class="marque-logo light-bg">
+            <img src="wil.png"                 alt="Wilier Triestina" class="marque-logo light-bg">
+            <img src="flow.png"                alt="Flow"             class="marque-logo light-bg">
+            <img src="granville.png"           alt="Granville"        class="marque-logo light-bg">
             <img src="selle-italia.png"        alt="Selle Italia"     class="marque-logo light-bg">
             <img src="sram.png"                alt="SRAM"             class="marque-logo light-bg">
             <!-- Fond coloré -->
