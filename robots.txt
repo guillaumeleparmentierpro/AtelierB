@@ -1,0 +1,8 @@
+# robots.txt – L'Atelier B.
+# https://www.atelierb-velo.fr/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.atelierb-velo.fr/sitemap.xml
